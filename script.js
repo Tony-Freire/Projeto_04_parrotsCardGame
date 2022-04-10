@@ -1,4 +1,8 @@
 iniciarJogo();
+const imagens=
+[
+    "images/bobrossparrot.gif",
+]
 
 function iniciarJogo() {
     let numeroCartas;
@@ -16,14 +20,21 @@ function iniciarJogo() {
       adicionaCartas(numeroCartas);
          
 }
+function virarCarta(obj)
+{
+   alert("aqui a carta vai virar")
+   let carta =  obj.querySelector("li");
+     obj.innerHTML= `<img src=${imagens[0]} alt="" srcset="">`
+  
+}
 function adicionaCartas(numero) 
 {
     const gameContent = document.querySelector(".capsula-game");
     for (let i = 0; i < numero; i++) 
     {
-        gameContent.innerHTML = gameContent. innerHTML + 
-        '<div class="card">' +  
+        gameContent.innerHTML = gameContent.innerHTML + 
+        '<li class="card" onclick="virarCarta(this)">' +  
             '<img src="images/front.png" alt="" srcset="">' +
-        '</div>'  
+        '</li>'  
     }      
 }
