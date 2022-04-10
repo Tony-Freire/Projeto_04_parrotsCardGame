@@ -2,6 +2,9 @@ body
 {
     background-color: #f7fcbe;
 }
+li{
+    list-style-type: none;
+  }
 .conteudo {
     display: flex;
     flex-direction: column;
@@ -20,9 +23,11 @@ body
 }
 
 .capsula-game {
+    background-color: #f1f8a4;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    box-shadow:         8px 4px 4px 0px rgba(51, 53, 55, 0.47);
 }
 
 .card {
@@ -35,7 +40,9 @@ body
     height: 146px;
 
     margin: 16px;
-    padding: 20px 10px  ;
+    padding: 20px 10px ;  
+    box-shadow:  8px 4px 4px 0px rgba(51, 53, 55, 0.47);
+
 }
 
 .card img {
