@@ -10,6 +10,7 @@ const imagens=
   "images/unicornparrot.gif"   
  ]
 iniciarJogo();
+let jogadas =0;
 
 function iniciarJogo() 
 {
@@ -26,6 +27,9 @@ function iniciarJogo()
     }
       alert("O jogo vai começar com " + numeroCartas + " cartas!");
       adicionaCartas(numeroCartas);
+      console.log("foi");
+      setInterval(venceu,1000,numeroCartas);
+      
       
          
 }
@@ -41,6 +45,7 @@ function virarCarta(obj)
           } 
     }        
          setInterval(verificaMatch,1000);
+         
              
          
 }
@@ -70,10 +75,12 @@ function adicionaCartas(numero)
             +   
         '</li>'  
     } 
+    
 }
 function verificaMatch()
 {
     let cardSelecionado = document.querySelectorAll(".selecionado"); 
+    
     if (cardSelecionado[0] && cardSelecionado[1]) 
     {
        if (cardSelecionado[0].innerHTML===cardSelecionado[1].innerHTML) 
@@ -92,22 +99,20 @@ function verificaMatch()
         }
         cardSelecionado=[];
     }
+    jogadas++
     
        
 }
-function removeClickRapido(){
-	const cards = document.querySelectorAll(".card");
-	for (let i = 0; i < cards.length; i++) {
-		cards[i].removeAttribute("onclick");
+function venceu(num) {
+	let match = document.querySelectorAll(".match");
+     console.log("teste");
+	if (match.length === num) 
+    {
+		alert("Parabéns! Você ganhou em " + jogadas + " jogadas.");
+		console.log("venceu");
 	}
-
-	setTimeout(function(){
-		for (let i = 0; i < cards.length; i++) {
-			cards[i].setAttribute("onclick","virarCarta(this)");
-		}
-	}, 1000, cards);
-   
 }
+
 function abaixarCarta(card)
 {
     for(let i=0; i<card.length;i++)
