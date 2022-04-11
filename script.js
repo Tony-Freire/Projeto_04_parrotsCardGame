@@ -109,7 +109,7 @@ function venceu(num) {
 	if (match.length === num) 
     {
 		alert("Parabéns! Você ganhou em " + jogadas + " jogadas.");
-		console.log("venceu");
+		location.reload();
 	}
 }
 
