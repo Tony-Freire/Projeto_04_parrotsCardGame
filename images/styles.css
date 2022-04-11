@@ -72,14 +72,7 @@ li{
 .card.selecionado .front-img {
    
     transform: rotateY(-180deg);
-}
-.match .back-img {
-    transform: rotateY(0deg);
-}
-
-.match .front-img {
-    transform: rotateY(-180deg);
-}
+} 
 
 @media (max-width: 600px) 
 {
