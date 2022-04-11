@@ -48,6 +48,13 @@ li{
 .card img {
     width: 100%;
 }
+.front-img
+{
+    display: none;
+}
+.back-img
+{
+}    
 
 @media (max-width: 600px) 
 {

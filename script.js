@@ -1,9 +1,15 @@
-iniciarJogo();
-const imagens=
-[
-    "images/bobrossparrot.gif",
-]
 
+const imagens=
+ [
+  "images/bobrossparrot.gif",
+  "images/explodyparrot.gif",   
+  "images/fiestaparrot.gif" ,   
+  "images/metalparrot.gif",
+  "images/revertitparrot.gif",
+  "images/tripletsparrot.gif",
+  "images/unicornparrot.gif"   
+ ]
+iniciarJogo();
 function iniciarJogo() {
     let numeroCartas;
  
@@ -23,18 +29,34 @@ function iniciarJogo() {
 function virarCarta(obj)
 {
    alert("aqui a carta vai virar")
-   let carta =  obj.querySelector("li");
-     obj.innerHTML= `<img src=${imagens[0]} alt="" srcset="">`
-  
+   
+   
 }
 function adicionaCartas(numero) 
 {
     const gameContent = document.querySelector(".capsula-game");
+    
+    const carta = imagens.slice(0, (numero/2));
+    for (let i = 0; i < numero/2; i++) 
+    {
+        carta.push(carta[i]);
+    }
+    for (let i = 0; i < carta.length; i++) {
+        carta.sort(random);        
+    }
     for (let i = 0; i < numero; i++) 
     {
-        gameContent.innerHTML = gameContent.innerHTML + 
-        '<li class="card" onclick="virarCarta(this)">' +  
-            '<img src="images/front.png" alt="" srcset="">' +
+        gameContent.innerHTML +=  
+        `<li class="card" onclick="virarCarta(this)">   
+            <img src="images/front.png" class = "front-img" alt="" srcset="">
+            <img src=${carta[i]} alt="" srcset=""> 
+          `
+            +   
         '</li>'  
-    }      
+    } 
+
+
+}
+function random() {
+    return Math.random() - 0.5;
 }
