@@ -28,8 +28,11 @@ function iniciarJogo() {
 }
 function virarCarta(obj)
 {
-   alert("aqui a carta vai virar")
-   
+    const cardSelecionados = document.querySelectorAll(".selecionado");
+   if(cardSelecionados.length!==2)
+   {
+          obj.classList.add("selecionado") 
+   }
    
 }
 function adicionaCartas(numero) 
@@ -47,9 +50,13 @@ function adicionaCartas(numero)
     for (let i = 0; i < numero; i++) 
     {
         gameContent.innerHTML +=  
-        `<li class="card" onclick="virarCarta(this)">   
-            <img src="images/front.png" class = "front-img" alt="" srcset="">
-            <img src=${carta[i]} alt="" srcset=""> 
+        `<li class="card" onclick="virarCarta(this)"> 
+           <div class= "front-img face">
+           <img src="images/front.png"  alt="" srcset="">
+              </div>
+           <div class="back-img face">
+           <img src=${carta[i]} alt="" srcset=""> 
+            </div>           
           `
             +   
         '</li>'  

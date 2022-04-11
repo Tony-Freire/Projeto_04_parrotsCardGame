@@ -27,34 +27,52 @@ li{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    box-shadow:         8px 4px 4px 0px rgba(51, 53, 55, 0.47);
+    box-shadow:8px 4px 4px 0px rgba(51, 53, 55, 0.47);
 }
 
 .card {
-    background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
+  
     border-radius: 5px;
     box-sizing: border-box;
-
     width: 117px;
     height: 146px;
-
     margin: 16px;
-    padding: 20px 10px ;  
-    box-shadow:  8px 4px 4px 0px rgba(51, 53, 55, 0.47);
+    position: relative;
+    
 
 }
 
 .card img {
     width: 100%;
 }
-.front-img
-{
-    display: none;
+ 
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
-.back-img
-{
-}    
+
+.back-img {
+    transform: rotateY(180deg);
+}
+
+.card.selecionado .back-img {
+    transform: rotateY(0deg);
+}
+
+.card.selecionado .front-img {
+   
+    transform: rotateY(-180deg);
+} 
 
 @media (max-width: 600px) 
 {
