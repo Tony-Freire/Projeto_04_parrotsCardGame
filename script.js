@@ -10,7 +10,9 @@ const imagens=
   "images/unicornparrot.gif"   
  ]
 iniciarJogo();
-function iniciarJogo() {
+
+function iniciarJogo() 
+{
     let numeroCartas;
  
     while (!numeroCartas)
@@ -24,16 +26,23 @@ function iniciarJogo() {
     }
       alert("O jogo vai começar com " + numeroCartas + " cartas!");
       adicionaCartas(numeroCartas);
+      
          
 }
 function virarCarta(obj)
 {
-    const cardSelecionados = document.querySelectorAll(".selecionado");
-   if(cardSelecionados.length!==2)
-   {
-          obj.classList.add("selecionado") 
-   }
    
+    if(!obj.classList.contains("selecionado"))
+    {
+      const cardSelecionados = document.querySelectorAll(".selecionado");
+       if(cardSelecionados.length!==2)
+          {
+          obj.classList.add("selecionado") 
+          } 
+    }        
+         setInterval(verificaMatch,1000);
+             
+         
 }
 function adicionaCartas(numero) 
 {
@@ -61,9 +70,53 @@ function adicionaCartas(numero)
             +   
         '</li>'  
     } 
-
-
 }
+function verificaMatch()
+{
+    let cardSelecionado = document.querySelectorAll(".selecionado"); 
+    if (cardSelecionado[0] && cardSelecionado[1]) 
+    {
+       if (cardSelecionado[0].innerHTML===cardSelecionado[1].innerHTML) 
+         {
+            for (let i = 0; i < cardSelecionado.length; i++) 
+            {
+                cardSelecionado[i].classList.add("match");   
+                cardSelecionado[i].classList.remove("selecionado");
+                           
+            }
+        }
+         else
+        {
+            setTimeout(abaixarCarta,1000,cardSelecionado);
+                                           
+        }
+        cardSelecionado=[];
+    }
+    
+       
+}
+function removeClickRapido(){
+	const cards = document.querySelectorAll(".card");
+	for (let i = 0; i < cards.length; i++) {
+		cards[i].removeAttribute("onclick");
+	}
+
+	setTimeout(function(){
+		for (let i = 0; i < cards.length; i++) {
+			cards[i].setAttribute("onclick","virarCarta(this)");
+		}
+	}, 1000, cards);
+   
+}
+function abaixarCarta(card)
+{
+    for(let i=0; i<card.length;i++)
+    {
+        card[i].classList.remove("selecionado");
+    }
+}
+
+
 function random() {
     return Math.random() - 0.5;
 }
